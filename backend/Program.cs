@@ -7,6 +7,8 @@ using QCScheduler.Api.Services;
 using System.Text;
 using System.Threading.Tasks;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // 1. Add DB Contexts
