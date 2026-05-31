@@ -21,8 +21,10 @@ export const setupSignalR = (queryClient: QueryClient) => {
   const token = localStorage.getItem('qc_token');
   if (!token) return;
 
+  const hubUrl = import.meta.env.VITE_HUB_URL || 'http://localhost:5224/qchub';
+
   connection = new signalR.HubConnectionBuilder()
-    .withUrl('http://localhost:5224/qchub', {
+    .withUrl(hubUrl, {
       accessTokenFactory: () => localStorage.getItem('qc_token') || '',
     })
     .withAutomaticReconnect()
