@@ -11,10 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. Add DB Contexts
 builder.Services.AddDbContext<QCSchedulerDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("QCSchedulerConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("QCSchedulerConnection")));
 
 builder.Services.AddDbContext<EpicorDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EpicorConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("EpicorConnection")));
 
 // 2. Add SignalR
 builder.Services.AddSignalR();
